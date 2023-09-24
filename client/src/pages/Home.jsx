@@ -42,10 +42,14 @@ const Home = () => {
 
     setsearchTimeout(
       setTimeout(()=>{
-        const searchResults = AllPosts.filter((item) =>item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
+        const searchResults = AllPosts.filter((item) =>
+        item.name.toLowerCase().includes(searchtext.toLowerCase()) || 
+        item.prompt.toLowerCase().includes(searchtext.toLowerCase())
+        );
         setsearchedResults(searchResults);
       }, 500))
     }
+    
     
   useEffect(()=>{
     fetchPosts();
