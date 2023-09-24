@@ -16,28 +16,25 @@ const Home = () => {
   const [searchedResults, setsearchedResults] = useState(null);
   const [searchTimeout, setsearchTimeout] = useState(null);
 
-  useEffect(()=>{
-    const fetchPosts = async () => {
-      setloading(true);
-      try {
-        const response = await fetch('http://localhost/8080/api/v1/post', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        if(response.ok){
-          const result = await response.json();
-          setAllPosts(result.data.reverse());
-        }
-      } catch (error) {
-        alert(error)
-      }finally{
-        setloading(false)
+  const fetchPosts = async () => {
+    setloading(true);
+    try {
+      const response = await fetch('http://localhost/8080/api/v1/post', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      if(response.ok){
+        const result = await response.json();
+        setAllPosts(result.data.reverse());
       }
+    } catch (error) {
+      alert(error)
+    }finally{
+      setloading(false)
     }
-    fetchPosts();
-  },[])
+  }
   
   const handleSearchChange = (e) =>{
     clearTimeout(searchTimeout);
@@ -49,9 +46,13 @@ const Home = () => {
         setsearchedResults(searchResults);
       }, 500))
     }
-  return (
     
+  useEffect(()=>{
+    fetchPosts();
+  },[])
 
+
+  return (
       <section className='max-w-7xl mx-auto'>
         <div>
           <h1 className='font-extrabold text-[#222328] text-[32px]'>The <span class="magic"><span class="magic-text">Community </span></span> Showcase</h1>
@@ -94,7 +95,6 @@ const Home = () => {
           )}
         </div>
       </section>
-
   )
 }
 
