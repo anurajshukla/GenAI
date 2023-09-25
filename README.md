@@ -1,6 +1,6 @@
 # GenAI
 
-A full stack application developed using the MERN stack using the OpenAI API to display the use of Generative AI <br> 
+A full stack application developed using the MERN stack and OpenAI API to unveil the use of Generative AI <br> 
 
 The Front end is constructed using React that is fully adaptable and creates 1024x1024 images by leveraging the OpenAI API, based on user-provided prompts. <br>
 Users have the option to select prompts manually or utilize a preset collection of 50 prompts via the "Surprise Me" feature. <br>
